@@ -16,7 +16,7 @@ app.get('/json', function(req, res) {
     message = message.toUpperCase();
   }
 
-  res.json({ message: message });
+  res.send(`{"message": "${message}"}`);
 });
 
 app.use('/public', express.static(__dirname + '/public'))
