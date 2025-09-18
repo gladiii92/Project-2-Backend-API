@@ -8,14 +8,15 @@ app.get('/', function(req, res) {
     res.sendFile(absolutePath);    
 });
 
-app.get('/json', (req, res) => {
-  let response = 'Hello json';
-  if (process.env.MESSAGE_STYLE === 'uppercase') {
-    response = response.toUpperCase();
+app.get('/json',(req,res)=>{
+  var response = 'Hello json';
+  if(process.env.MESSAGE_STYLE==='uppercase'){
+    response=response.toUpperCase();
+  }else{
+    response = 'Hello json';
   }
-  // Manuell den JSON-String mit Leerzeichen nach ":" bauen
-  const jsonString = '{"message": "' + response + '"}';
-  res.type('application/json').send(jsonString);
+  res.json({message:response});
+
 });
 
 app.use('/public', express.static(__dirname + '/public'))
