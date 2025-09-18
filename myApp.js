@@ -2,7 +2,6 @@ require('dotenv').config()
 
 let express = require('express');
 let app = express();
-app.set('json spaces', ' ');
 
 app.get('/', function(req, res) {
     const absolutePath = __dirname + '/views/index.html';
@@ -10,11 +9,13 @@ app.get('/', function(req, res) {
 });
 
 app.get('/json', (req, res) => {
-  let message = 'Hello json';
+  let response = 'Hello json';
   if (process.env.MESSAGE_STYLE === 'uppercase') {
-    message = message.toUpperCase();
+    response = response.toUpperCase();
   }
-  res.json({ message });
+  // Manuell den JSON-String mit Leerzeichen nach ":" bauen
+  const jsonString = '{"message": "' + response + '"}';
+  res.type('application/json').send(jsonString);
 });
 
 app.use('/public', express.static(__dirname + '/public'))
