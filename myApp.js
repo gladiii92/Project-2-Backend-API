@@ -13,7 +13,7 @@ app.get('/json',(req,res)=>{
     res.json({"message":"HELLO JSON"})
   }
   else{
-    res.json({"message":"Hello json"})
+    res.json({"message":"Hello Json"})
   }
 })
 
