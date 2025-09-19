@@ -8,6 +8,7 @@ app.get('/', function(req, res) {
     res.sendFile(absolutePath);    
 });
 
+var MESSAGE_STYLE="uppercase"
 app.get("/json", (req, res) => {
   if(process.env.MESSAGE_STYLE === "uppercase"){
     res.json({
